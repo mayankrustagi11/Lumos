@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/css/materialize.css">
+    <link rel="stylesheet" href="/css/fontawesome.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Social Traveller</title>
+
+</head>
+<body>
+
+    {{> _header}}
+
+    <main>
+        <div class="container">
+            {{> _msg}}
+            {{> _errors}}
+            {{{body}}}
+        </div>
+    </main>
+    
+    {{> _footer}}
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

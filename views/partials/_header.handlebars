@@ -1,0 +1,38 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="/">Profile</a></li>
+    <li class="divider"></li>
+    <li><a href="/users/logout">Logout</a></li>
+</ul>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    {{#if user}}
+    <li><a href="/">Profile</a></li>
+    <li class="divider"></li>
+    <li><a href="/users/logout">Logout</a></li>
+    {{else}}
+    <li><a href="/users/login">Login</a></li>
+    <li><a href="/users/register">Register</a></li>
+    {{/if}}
+</ul>
+
+<nav class="indigo darken-2">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Traveller</a>
+            <a data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                {{#if user}}
+                <li><a class="dropdown-trigger" data-target="dropdown1">{{user.fname}} {{user.lname}}<i class="fa fa-caret-down right"></i></li>
+                {{else}}
+                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/register">Register</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

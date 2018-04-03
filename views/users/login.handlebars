@@ -1,0 +1,30 @@
+<div class="row">
+    <h3 class="center">LOGIN</h3>
+    <div class="card center col s6 offset-s3">
+        
+        <div class="card-content">
+
+            <form action="/users/login" method="POST">
+
+                <div class="input-field">
+                    <input name="email" type="email" class="validate" required="required" value="{{email}}">
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="input-field">
+                    <input name="password" type="password" class="validate" required="required">
+                    <label for="password">Password</label>
+                </div>
+
+                <button class="btn waves-effect waves-light indigo darken-2" type="submit">Login</button>
+
+            </form>
+
+            <div class="input-field">
+                <a href="/users/register" class="white black-text">No Account? Register</a>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
