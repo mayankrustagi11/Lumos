@@ -9,15 +9,18 @@
   "author": "Mayank Rustagi",
   "license": "MIT",
   "dependencies": {
+    "@google/maps": "^0.4.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
+    "dialogflow": "^0.2.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "mongoose": "^5.0.12",
     "nodemon": "^1.17.3",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "socket-io": "^1.0.0"
   }
 }
