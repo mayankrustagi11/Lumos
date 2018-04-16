@@ -15,36 +15,56 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
     getLocation();
-});
+      
+  const form = document.getElementById('search-form');
 
-const form = document.getElementById('search-form');
+  // Form Submit Event
+  form.addEventListener('submit', e => {
+    const query = document.getElementById('search-query').value;
+    const longitude = document.getElementById('longitude').innerHTML;
+    const latitude = document.getElementById('latitude').innerHTML;
 
-// Form Submit Event
-form.addEventListener('submit', e => {
-  const query = document.getElementById('search-query').value;
-  const longitude = document.getElementById('longitude').innerHTML;
-  const latitude = document.getElementById('latitude').innerHTML;
+    const data = {
+      lat: latitude,
+      lng: longitude,
+      query: query
+    };
 
-  const data = {
-    lat: latitude,
-    lng: longitude,
-    query: query
-  };
+      fetch('http://localhost:5000/explore', {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: new Headers({
+                  'Content-Type': 'application/json'
+              })
+          })
+          .then(res => res.json())
+          .then(places => {
+            let output = '';
+            //console.log(places);
 
-    fetch('http://localhost:5000/explore', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        })
-        .then(res => res.json())
-        .then(places => {
-          places.forEach(place => {
-            console.log(place);
-          });
-        })
-        .catch(err => console.log(err));
+            $.each(places, (index, place) => {
+              //console.log(place);
 
-    e.preventDefault();
+
+              output += `
+              <div class="col s3">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>location-name</h4>
+                        <h4></h4>
+                        <p>location-city location-state</p>
+                        <h5>location-distance</h5>
+                    </div>
+                </div>
+              </div>
+              `;
+
+            });
+            $('#results').html(output);
+            //console.log(places);
+          })
+          .catch(err => console.log(err));
+
+      e.preventDefault();
+  });
 });

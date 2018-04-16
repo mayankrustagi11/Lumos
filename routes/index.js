@@ -43,7 +43,7 @@ router.post('/explore', (req, res) => {
         } else {
             places = JSON.parse(data);          // Convert to JSON
             places = places.response.groups;    // Iterate to Array of Objects
-            places = places[0].items[0];        // Iterate to response
+            places = places[0].items;        // Iterate to response
 
             //console.log(places);
             return res.json({
