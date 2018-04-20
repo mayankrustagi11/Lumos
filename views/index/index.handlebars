@@ -2,8 +2,12 @@
 
     <div class="row">
         <div class="col s12">
+            {{#if user}}
             <a href="/explore" class="btn btn-large black">Explore Places</a>
             <a href="/places" class="btn btn-large black">Visit Places</a>
+            {{else}}
+            <a href="/users/login" class="btn btn-large black">Login to Get Started</a>
+            {{/if}}
         </div>
     </div>
 

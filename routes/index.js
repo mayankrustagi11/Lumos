@@ -1,6 +1,7 @@
 const express = require('express');
 const request = require('request');
 const router = express.Router();
+const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 
 // Load Google Maps
 const googleMapsClient = require('@google/maps').createClient({
@@ -16,11 +17,11 @@ router.get('/about', (req, res) => {
     res.render('index/about');
 });
 
-router.get('/places', (req, res) => {
+router.get('/places', ensureAuthenticated, (req, res) => {
     res.render('index/places');
 });
 
-router.get('/explore', (req, res) => {
+router.get('/explore', ensureAuthenticated, (req, res) => {
     res.render('index/explore');
 });
 
