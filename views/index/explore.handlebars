@@ -3,12 +3,12 @@
         <div class="card center">
             <div class="card-content">
 
-                <h4 class="center">Start Exploring</h4>
+                <h4>Start Exploring</h4>
 
                 <form id="search-form" method="POST">
                     <div class="input-field">
                         <input id="search-query" name="query" type="text" class="validate" required>
-                        <label for="search-query">Search Query</label>
+                        <label for="search-query">What do you like?</label>
                     </div>
                     <button type="submit" class="btn btn-large indigo darken-2">Search<i class="fa fa-search right"></i></button>
                 </form>
@@ -16,16 +16,25 @@
             </div>
         </div>
     </div>
-</div>  
-
-<div class="row">
-    <div class="location-details col s6 offset-s3">
-        <label for="longitude">Longitude</label><span id="longitude"></span>
-        <label for="latitude">Latitude</label><span id="latitude"></span>
-    </div>
 </div>
 
-<div class="row" id="results">
+<div class="row location">
+    <div class="col s10 offset-s1">
+        <div class="card">
+            <div class="card-content">
+
+                <div class="location-details center">
+                    <h5>Your Location</h5>
+                    <label for="longitude">Longitude</label><span id="longitude"></span>
+                    <label for="latitude">Latitude</label><span id="latitude"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div id="results">
 
 </div>
 

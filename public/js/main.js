@@ -7,8 +7,8 @@ function getLocation() {
 }
 
 function setCoordinates(position) {
-  document.getElementById('longitude').innerHTML = position.coords.longitude;
-  document.getElementById('latitude').innerHTML = position.coords.latitude;
+  document.getElementById('longitude').innerHTML = parseFloat(position.coords.longitude.toFixed(2));
+  document.getElementById('latitude').innerHTML = parseFloat(position.coords.latitude.toFixed(2));
 }
 
 $(document).ready(function(){
@@ -20,6 +20,7 @@ $(document).ready(function(){
 
   // Form Submit Event
   form.addEventListener('submit', e => {
+
     const query = document.getElementById('search-query').value;
     const longitude = document.getElementById('longitude').innerHTML;
     const latitude = document.getElementById('latitude').innerHTML;
@@ -30,41 +31,54 @@ $(document).ready(function(){
       query: query
     };
 
-      fetch('http://localhost:5000/explore', {
-              method: 'POST',
-              body: JSON.stringify(data),
-              headers: new Headers({
-                  'Content-Type': 'application/json'
-              })
-          })
-          .then(res => res.json())
-          .then(places => {
-            let output = '';
-            //console.log(places);
+    fetch('http://localhost:5000/explore', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+          places = data.places;
 
-            $.each(places, (index, place) => {
-              //console.log(place);
+          let output = '';
+          var i = 0;
+          //console.log(places);
 
+          $.each(places, (index, place) => {
+            //console.log(place);
 
-              output += `
+            if(i % 4 == 0) {
+              output += `<div class="row">`;
+            }
+
+            output += `
               <div class="col s3">
                 <div class="card">
                     <div class="card-content">
-                        <h4>location-name</h4>
-                        <h4></h4>
-                        <p>location-city location-state</p>
-                        <h5>location-distance</h5>
+                        <h5>${place.venue.name ? place.venue.name : 'Unavailable'}</h5>
+                        <h6><i class="fa fa-address-book left"></i>${place.venue.location.address ? place.venue.location.address : 'Unavailable'}</h6>
+                        <h6><i class="fas fa-star left"></i>${place.venue.rating ? place.venue.rating : 'Unavailable'}</h6>
+                        <h6><i class="fas fa-road left"></i>${place.venue.location.distance ? parseFloat((place.venue.location.distance / 1000).toFixed(2)) : 'Unavailable'}KMs</h6>
+                        <h6><i class="fas fa-phone left"></i>${place.venue.contact.phone ? place.venue.contact.phone : 'Unavailable'}</h6>
                     </div>
                 </div>
-              </div>
-              `;
+              </div>  
+            `;
 
-            });
-            $('#results').html(output);
-            //console.log(places);
-          })
-          .catch(err => console.log(err));
+            if((i+1) % 4 == 0) {
+              output += `</div>`;
+            }
 
-      e.preventDefault();
+            i = i + 1;
+
+          });
+          $('#results').html(output);
+          //console.log(places);
+        })
+        .catch(err => console.log(err.toString()));
+
+    e.preventDefault();
   });
 });

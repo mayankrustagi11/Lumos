@@ -30,25 +30,25 @@ router.post('/explore', (req, res) => {
         url: 'https://api.foursquare.com/v2/venues/explore',
         method: 'GET',
         qs: {
-          client_id: 'Q1W2C1ZFAEAUDKOMZREQ1IOOY1I5RJ3ZCWM4ZHZUNEFOIYIK',
-          client_secret: 'DCRMKR2CQMLZST2NXP4YJMTECCFYVFAE1LQSED0UFJSUVAIL',
-          ll: `${req.body.lat}, ${req.body.lng}`,
-          query: req.body.query,
-          v: '20180323',
-          limit: 50
+            client_id: 'Q1W2C1ZFAEAUDKOMZREQ1IOOY1I5RJ3ZCWM4ZHZUNEFOIYIK',
+            client_secret: 'DCRMKR2CQMLZST2NXP4YJMTECCFYVFAE1LQSED0UFJSUVAIL',
+            ll: `${req.body.lat}, ${req.body.lng}`,
+            query: req.body.query,
+            v: '20180323',
+            radius: 100000,
+            limit: 100
         }
-      }, function(err, response, data) {
+        }, function(err, response, data) {
         if (err) {
             console.error(err);
         } else {
             places = JSON.parse(data);          // Convert to JSON
             places = places.response.groups;    // Iterate to Array of Objects
-            places = places[0].items;        // Iterate to response
+            places = places[0].items;           // Iterate to response
 
             //console.log(places);
             return res.json({
-            places: places,    
-            success: true
+                places: places
             });
         }
     });
