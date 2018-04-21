@@ -21,6 +21,23 @@ router.get('/places', ensureAuthenticated, (req, res) => {
     res.render('index/places');
 });
 
+router.get('/explore/from=:slat&:slng&to=:dlat&:dlng', ensureAuthenticated, (req, res) => {
+    start = {
+        lat: req.params.slat,
+        lng: req.params.slng
+    };
+
+    end = {
+        lat: req.params.dlat,
+        lng: req.params.dlng
+    }
+
+    res.render('index/directions', {
+        start: start,
+        end: end
+    });
+});
+
 router.get('/explore', ensureAuthenticated, (req, res) => {
     res.render('index/explore');
 });
@@ -37,6 +54,7 @@ router.post('/explore', (req, res) => {
             query: req.body.query,
             v: '20180323',
             radius: 100000,
+            sortByDistance: 1,
             limit: 100
         }
         }, function(err, response, data) {

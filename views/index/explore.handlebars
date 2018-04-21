@@ -6,11 +6,31 @@
                 <h4>Start Exploring</h4>
 
                 <form id="search-form" method="POST">
+
                     <div class="input-field">
                         <input id="search-query" name="query" type="text" class="validate" required>
                         <label for="search-query">What do you like?</label>
                     </div>
-                    <button type="submit" class="btn btn-large indigo darken-2">Search<i class="fa fa-search right"></i></button>
+
+                    <button type="submit" class="btn btn-large indigo darken-2" id="search-btn" disabled>
+
+                        <div class="preloader-wrapper small active left">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        Fetching Location
+                    </button>
+
                 </form>
 
             </div>

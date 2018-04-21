@@ -6,6 +6,12 @@ body {
   background: url('../images/tile.jpg') top left repeat;
 }
 
+nav ul li a {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  font-size: 16px !important;
+}
+
 .background {
   width: 100%;
   height: 694px;
@@ -26,6 +32,10 @@ body {
   font-size: 18px !important;
 }
 
+#search-btn .preloader-wrapper {
+  margin: 5px 5px 5px 5px;
+}
+
 .location-details {
   position: relative;
 }
@@ -40,14 +50,14 @@ body {
   margin-left: 5px;
 }
 
- #map {
-   width: 100%;
-   height: 690px;
-   background-color: grey;
-   margin-bottom: -20px;
- }
+#map {
+  width: 100%;
+  height: 694px;
+  background-color: grey;
+  margin-bottom: -20px;
+}
 
- .controls {
+.controls {
   margin-top: 10px;
   border: 1px solid transparent;
   border-radius: 2px 0 0 2px;
@@ -83,8 +93,47 @@ body {
 
 #mode-selector label {
   color: #fff !important;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
+}
+
+#directions {
+  margin: 0 !important;
+}
+
+#directions-map {
+  height: 694px;
+  position: fixed !important;
+}
+
+#right-panel {
+  height: 100%;
+  line-height: 30px;
+  padding-left: 10px;
+  font-size: 15px;
+  margin: 0 !important;
+}
+
+#right-panel .card-content {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+.panel {
+  height: 100%;
+  overflow: auto;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
 }
 
 /* ALERT SECTION */

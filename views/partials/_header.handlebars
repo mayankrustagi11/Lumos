@@ -2,7 +2,6 @@
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
     {{#if user}}
-    <li><a href="/">Places</a></li>
     <li><a href="/users/logout">Logout</a></li>
     {{else}}
     <li><a href="/users/login">Login</a></li>
@@ -10,24 +9,25 @@
     {{/if}}
 </ul>
 
-<nav class="indigo darken-2">
-    <div class="container">
-        <div class="nav-wrapper">
-            <a href="/" class="brand-logo">Lumos</a>
-            <a data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
+<div class="navbar-fixed">
+    <nav class="indigo darken-2">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Lumos</a>
+                <a data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
 
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                {{#if user}}
-                <li><a href="/places">Places</a></li>
-                <li>{{user.fname}} {{user.lname}}</li>
-                <li><a href="/users/logout">Logout</a></li>
-                {{else}}
-                <li><a href="/users/login">Login</a></li>
-                <li><a href="/users/register">Register</a></li>
-                {{/if}}
-            </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    {{#if user}}
+                    <li><a>{{user.fname}} {{user.lname}}</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                    {{else}}
+                    <li><a href="/users/login">Login</a></li>
+                    <li><a href="/users/register">Register</a></li>
+                    {{/if}}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>

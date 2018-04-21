@@ -1,0 +1,66 @@
+<div class="row" id="directions">
+
+    <div class="col l9 m12 s12 left" id="directions-map"></div>      
+    <div class="col l3 m12 s12 card right" id="right-panel">
+        <div class="card-content">
+            <p class="center">Total Distance: <span id="total"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('directions-map'), {
+                zoom: 5,
+                center: {
+                    lat: {{start.lat}},
+                    lng: {{start.lng}}
+                },
+            });
+
+            var origin =  new google.maps.LatLng({{start.lat}}, {{start.lng}});
+            var destination = new google.maps.LatLng({{end.lat}}, {{end.lng}});
+
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                draggable: true,
+                map: map,
+                panel: document.getElementById('right-panel')
+            });
+
+            directionsDisplay.addListener('directions_changed', function () {
+                computeTotalDistance(directionsDisplay.getDirections());
+            });
+
+            displayRoute(origin, destination, directionsService, directionsDisplay);
+        }
+
+        function displayRoute(origin, destination, service, display) {
+            service.route({
+                origin: origin,
+                destination: destination,
+                travelMode: 'DRIVING',
+                avoidTolls: true
+            }, function (response, status) {
+                if (status === 'OK') {
+                    display.setDirections(response);
+                } else {
+                    alert('Could not display directions due to: ' + status);
+                }
+            });
+        }
+
+        function computeTotalDistance(result) {
+            var total = 0;
+            var myroute = result.routes[0];
+            for (var i = 0; i < myroute.legs.length; i++) {
+                total += myroute.legs[i].distance.value;
+            }
+            total = total / 1000;
+            document.getElementById('total').innerHTML = total + ' km';
+        }
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuN6PkPhyf5HU3GZwsLArv3FEK4ecTmKk&libraries=places&callback=initMap" async defer></script>
+
+</div>
