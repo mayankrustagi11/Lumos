@@ -36,7 +36,7 @@ $(document).ready(function(){
       query: query
     };
 
-    fetch('http://localhost:5000/explore', {
+    fetch('https://rocky-ocean-96945.herokuapp.com/explore', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: new Headers({
