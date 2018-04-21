@@ -136,6 +136,18 @@ nav ul li a {
   font-size: 12px;
 }
 
+@media only screen and (max-width: 900px) {
+  #directions-map {
+    position: relative !important;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  #directions-map {
+    position: relative !important;
+  }
+}
+
 /* ALERT SECTION */
 
 .alert {
